@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { FaInstagram, FaFacebookF, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
+
 
 export default function Footer2() {
     return (
@@ -94,55 +96,63 @@ export default function Footer2() {
                                                 </span>
                                             </span>
 
-                                            <ul className="common-social d-flex align-items-center gap-2">
-  {/* Facebook */}
+ <ul className="common-social pt-5 d-flex align-items-center gap-2">
+  {/* Instagram */}
   <li data-aos="zoom-in-right" data-aos-duration={1400}>
     <a
-      href="https://facebook.com/"
+      href="https://www.instagram.com/ranzomtech/"
       target="_blank"
       rel="noopener noreferrer"
-      className="d-center"
+      className="social-link d-center"
+      aria-label="Instagram"
     >
-      {/* SVG */}
+      <FaInstagram />
     </a>
   </li>
 
-  {/* Twitter / X */}
+  {/* Facebook */}
   <li data-aos="zoom-in-right" data-aos-duration={1600}>
     <a
-      href="https://x.com/"
+      href="https://www.facebook.com/profile.php?id=61573078530968"
       target="_blank"
       rel="noopener noreferrer"
-      className="d-center"
+      className="social-link d-center"
+      aria-label="Facebook"
     >
-      {/* SVG */}
+      <FaFacebookF />
+    </a>
+  </li>
+
+  {/* WhatsApp */}
+  <li data-aos="zoom-in-right" data-aos-duration={1800}>
+    <a
+      href="https://wa.me/919544534677"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="social-link d-center"
+      aria-label="WhatsApp"
+    >
+      <FaWhatsapp />
     </a>
   </li>
 
   {/* LinkedIn */}
-  <li data-aos="zoom-in-right" data-aos-duration={1800}>
-    <a
-      href="https://linkedin.com/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="d-center"
-    >
-      {/* SVG */}
-    </a>
-  </li>
-
-  {/* YouTube */}
   <li data-aos="zoom-in-right" data-aos-duration={1900}>
     <a
-      href="https://youtube.com/"
+      href="https://www.linkedin.com/company/ranzomtech/"
       target="_blank"
       rel="noopener noreferrer"
-      className="d-center"
+      className="social-link d-center"
+      aria-label="LinkedIn"
     >
-      {/* SVG */}
+      <FaLinkedinIn />
     </a>
   </li>
 </ul>
+
+
+
+
 
 
 
