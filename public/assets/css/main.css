@@ -756,7 +756,7 @@ footer {
 
 @media (max-width: 1199px) {
     .header-section .brand-logo {
-        max-width: 100px;
+        max-width: 200px;
     }
 }
 
@@ -1128,7 +1128,7 @@ footer {
 }
 
 .breadcrumnd-banner {
-    background: url(../img/banner/breadcrumnd-bg.png) no-repeat center center;
+    background: url(../img/banner/breadcrumbbanner.png) no-repeat center center;
     background-size: cover;
     padding: 220px 2px 144px;
 }
@@ -2066,6 +2066,18 @@ footer {
 .offer-item .icon-area .icon {
     transition: all 0.5s;
 }
+
+.footer-under-logo {
+    width: 300px; /* Desktop */
+  }
+  
+  @media (max-width: 767px) {
+    .footer-under-logo {
+      display: none;
+    }
+  }
+
+
 
 .offer-item .icon-area .icon img {
     width: 50px;

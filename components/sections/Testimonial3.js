@@ -49,10 +49,10 @@ export default function Testimonial3() {
                                             </div>
                                             <div className="desig">
                                                 <h6 className="white-clr mb-1">
-                                                    Kathryn Murphy
+                                                    Alishan Gafoor
                                                 </h6>
                                                 <span className="pra-clr mb-2 d-block">
-                                                    Marketing Coordinator
+                                                   Accountant
                                                 </span>
                                                 <div className="ratting-area d-flex align-items-center gap-2">
                                                     <i className="fa-solid fa-star theme-clr" />
@@ -64,9 +64,9 @@ export default function Testimonial3() {
                                             </div>
                                         </div>
                                         <p className="pra-clr mt-xxl-8 mt-xl-6 mt-lg-5 mt-4">
-                                            Consectetur adipiscing elit. Integer is nunc viverra laoreet est the is
-                                            porta pretium metus aliquam eget maecenas porta
-                                            is nunc viverra Aenean.
+                                        RanzomTech developed the Jaza Perfumes e-commerce website with a 
+                                        clean UI and smooth UX. The site feels premium, loads fast, and the
+                                         full shopping flow is perfectly optimized.
                                         </p>
                                     </div>
                                 </div>

@@ -30,7 +30,7 @@ export default function About2() {
                                     <h2 className="stitle mb-xxl-8 mb-xl-7 mb-xl-5 mb-4" data-aos="fade-up" data-aos-duration={1600}>
                                         We are digital creative
                                         <span className="regular d-block">
-                                            agency in India 
+                                            agency for modern business
                                         </span>
                                     </h2>
                                     <p className="white-clr mb-xxl-10 mb-xl-8 mb-6">

@@ -20,7 +20,7 @@ export default function Contact() {
                                         Phone &amp; Fax
                                     </h5>
                                     <span className="msub d-block mb-2">
-                                        Mobile : +91 9947234099
+                                        Mobile : +91 95445 34677
                                     </span>
                                     {/* <span className="msub">
                                         Whatsapp : +91 9544534677
@@ -36,7 +36,7 @@ export default function Contact() {
                                         Mail Address
                                     </h5>
                                     <span className="msub d-block mb-2">
-                                        ranzomtech@gmail.com
+                                        info@ranzomtech.com
                                     </span>
                                     
                                 </div>

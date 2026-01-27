@@ -61,9 +61,9 @@ export default function Hero3() {
 
 
                     
-                    <div className="d-md-flex d-grid   mt-xxl-20 mt-xl-15 mt-lg-10 mt-md-0 mt-0">
+                    <div className=" d-md-flex d-grid align-items-center justify-content-md-between justify-content-center mt-xxl-20 mt-xl-15 mt-lg-10 mt-md-0 mt-0">
                         <div className="about-sponsor">
-                            <div className="align brand d-flex gap-4  mb-xxl-8 mb-xl-7 mb-lg-5 mb-4" data-aos="zoom-in-up" data-aos-duration={1600} data-aos-delay={5}>
+                            <div className="brand d-flex gap-4 align-items-left mb-xxl-8 mb-xl-7 mb-lg-5 mb-4" data-aos="zoom-in-up" data-aos-duration={1600} data-aos-delay={5}>
                                 <h6>
                                     2H+ Brands Trust Us
                                 </h6>

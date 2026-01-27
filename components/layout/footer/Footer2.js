@@ -210,7 +210,7 @@ export default function Footer2() {
   <img
     src="/assets/img/logo/logo.png"
     alt="img"
-    style={{ width: "350px", height: "auto" }}
+    className="footer-under-logo"
   />
 </Link>
                             <Link href="/#" className="pra-clr">
