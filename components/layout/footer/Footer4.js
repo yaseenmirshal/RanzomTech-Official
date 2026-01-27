@@ -184,7 +184,7 @@ export default function Footer4() {
                                                 <span className="ani-icons">
                                                     <i className="fas fa-angle-double-right pra-clr" />
                                                 </span>
-                                                About Xstar
+                                                About RanzomTech
                                             </Link>
                                         </li>
                                         <li>
