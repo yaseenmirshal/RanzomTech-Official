@@ -260,7 +260,7 @@ export default function About() {
                                                 <i className="fa-solid fa-arrow-right" />
                                             </span>
                                         </span>
-                                        Creative Design
+                                        Creative Designs
                                         <span className="digital-thumb">
                                             <img src="/assets/img/service/tab3.png" alt="img" />
                                         </span>
