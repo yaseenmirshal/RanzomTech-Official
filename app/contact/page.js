@@ -109,18 +109,6 @@ export default function Contact() {
                                     <h3 className="white mb-xxl-15 mb-xl-10 mb-lg-7 mb-5">
                                         Leave A Message
                                     </h3>
-                                    {error && (
-                                        <div style={{
-                                            padding: '15px',
-                                            marginBottom: '20px',
-                                            backgroundColor: '#f8d7da',
-                                            color: '#721c24',
-                                            borderRadius: '4px',
-                                            border: '1px solid #f5c6cb'
-                                        }}>
-                                            ✗ {error}
-                                        </div>
-                                    )}
                                     <form onSubmit={handleSubmit}>
                                         <div className="row g-xxl-8 g-xl-6 g-lg-4 g-4">
                                             <div className="col-lg-6">
