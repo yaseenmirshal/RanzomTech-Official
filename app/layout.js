@@ -22,6 +22,10 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata = {
     title: 'RanzomTech',
     description: 'Digital Agency',
+    icons: {
+        icon: '/favicon.ico',
+        apple: '/favicon.ico',
+    },
 }
 
 export default function RootLayout({ children }) {
