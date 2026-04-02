@@ -15,7 +15,7 @@ export async function POST(request) {
     // Create transporter - Configure with your email service
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
+      port: parseInt(process.env.SMTP_PORT, 10),
       secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
       auth: {
         user: process.env.SMTP_USER,
@@ -67,6 +67,12 @@ export async function POST(request) {
     );
   } catch (error) {
     console.error('Error sending email:', error);
+    console.error('SMTP Config:', {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      user: process.env.SMTP_USER,
+      hasPassword: !!process.env.SMTP_PASSWORD
+    });
     return new Response(
       JSON.stringify({ error: 'Failed to send email. Please try again later.' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
