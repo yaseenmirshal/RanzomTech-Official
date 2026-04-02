@@ -1,11 +1,87 @@
 
+'use client';
+
 import Layout from "@/components/layout/Layout"
+import ThankYouPopup from "@/components/elements/ThankYouPopup"
+import { useState } from "react"
+
 export default function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    const [loading, setLoading] = useState(false);
+    const [showThankYou, setShowThankYou] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log('Form submitted!');
+        setLoading(true);
+        setError('');
+
+        try {
+            console.log('Sending data:', formData);
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            console.log('Response status:', response.status);
+            const data = await response.json();
+            console.log('Response data:', data);
+
+            if (!response.ok) {
+                setError(data.error || 'Failed to send message');
+                setLoading(false);
+                return;
+            }
+
+            // Show thank you popup
+            console.log('Showing thank you popup');
+            setShowThankYou(true);
+            
+            // Reset form
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
+
+            // Auto close popup after 5 seconds
+            setTimeout(() => {
+                setShowThankYou(false);
+            }, 5000);
+        } catch (err) {
+            console.error('Catch error:', err);
+            setError('An error occurred. Please try again later.');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <>
 
             <Layout headerStyle={2} footerStyle={2} breadcrumbTitle="Contact Us">
+                <ThankYouPopup 
+                    isVisible={showThankYou} 
+                    onClose={() => setShowThankYou(false)} 
+                />
                 <section className="contact-section pt-space pb-space">
                     <div className="container">
                         <div className="row g-xl-7 g-4 mb-xxl-7 mb-6 justify-content-center">
@@ -85,45 +161,89 @@ export default function Contact() {
                                     <h3 className="white mb-xxl-15 mb-xl-10 mb-lg-7 mb-5">
                                         Leave A Message
                                     </h3>
-                                    <form action="#">
+                                    {error && (
+                                        <div style={{
+                                            padding: '15px',
+                                            marginBottom: '20px',
+                                            backgroundColor: '#f8d7da',
+                                            color: '#721c24',
+                                            borderRadius: '4px',
+                                            border: '1px solid #f5c6cb'
+                                        }}>
+                                            ✗ {error}
+                                        </div>
+                                    )}
+                                    <form onSubmit={handleSubmit}>
                                         <div className="row g-xxl-8 g-xl-6 g-lg-4 g-4">
                                             <div className="col-lg-6">
-                                                <input type="text" placeholder="Name" />
+                                                <input 
+                                                    type="text" 
+                                                    placeholder="Name"
+                                                    name="name"
+                                                    value={formData.name}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
                                             </div>
                                             <div className="col-lg-6">
-                                                <input type="email" placeholder="Email" />
+                                                <input 
+                                                    type="email" 
+                                                    placeholder="Email"
+                                                    name="email"
+                                                    value={formData.email}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
                                             </div>
                                             <div className="col-lg-12">
-                                                <select class="form-select">
-                                                    <option value={1}>
+                                                <select 
+                                                    className="form-select"
+                                                    name="subject"
+                                                    value={formData.subject}
+                                                    onChange={handleChange}
+                                                    required
+                                                >
+                                                    <option value="">Select a subject</option>
+                                                    <option value="General Inquiry">
                                                         General Inquiry
                                                     </option>
-                                                    <option value={1}>
+                                                    <option value="Start a Project">
                                                         Start a Project
                                                     </option>
-                                                    <option value={1}>
+                                                    <option value="Freelance Opportunities">
                                                         Freelance Opportunities
                                                     </option>
-                                                    <option value={1}>
+                                                    <option value="Careers at RanzomTech">
                                                         Careers at RanzomTech
                                                     </option>
-                                                     <option value={1}>
+                                                     <option value="Partnerships">
                                                         Partnerships
                                                     </option>
-                                                    <option value={1}>
+                                                    <option value="Support">
                                                         Support
                                                     </option>
-                                                    <option value={1}>
+                                                    <option value="Other">
                                                         Other
                                                     </option>
                                                 </select>
                                             </div>
                                             <div className="col-lg-12">
-                                                <textarea name="messages" rows={5} placeholder="Message" />
+                                                <textarea 
+                                                    name="message" 
+                                                    rows={5} 
+                                                    placeholder="Message"
+                                                    value={formData.message}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
                                             </div>
                                             <div className="col-lg-5">
-                                                <button type="submit" className="submit-btn">
-                                                    Send Message
+                                                <button 
+                                                    type="submit" 
+                                                    className="submit-btn"
+                                                    disabled={loading}
+                                                >
+                                                    {loading ? 'Sending...' : 'Send Message'}
                                                 </button>
                                             </div>
                                         </div>
