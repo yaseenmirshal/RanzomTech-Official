@@ -1,4 +1,6 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request) {
   try {
@@ -12,20 +14,18 @@ export async function POST(request) {
       );
     }
 
-    // Create transporter - Configure with your email service
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT, 10),
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD,
-      },
-    });
+    // Check if API key is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY is not configured');
+      return new Response(
+        JSON.stringify({ error: 'Email service is not configured' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
 
-    // Email to RanzomTech
-    const mailOptions = {
-      from: 'info@ranzomtech.com',
+    // Send email to RanzomTech
+    const adminResult = await resend.emails.send({
+      from: 'onboarding@resend.dev',
       to: 'info@ranzomtech.com',
       subject: `New Contact Form Submission: ${subject}`,
       html: `
@@ -36,14 +36,16 @@ export async function POST(request) {
         <p><strong>Message:</strong></p>
         <p>${message.replace(/\n/g, '<br>')}</p>
       `,
-    };
+    });
 
-    // Send email
-    await transporter.sendMail(mailOptions);
+    if (adminResult.error) {
+      console.error('Error sending admin email:', adminResult.error);
+      throw new Error(adminResult.error.message);
+    }
 
-    // Optional: Send confirmation email to user
-    const confirmationEmail = {
-      from: 'info@ranzomtech.com',
+    // Send confirmation email to user
+    const userResult = await resend.emails.send({
+      from: 'onboarding@resend.dev',
       to: email,
       subject: 'We received your message - RanzomTech',
       html: `
@@ -54,9 +56,12 @@ export async function POST(request) {
         <p>${message.replace(/\n/g, '<br>')}</p>
         <p>Best regards,<br>RanzomTech Team</p>
       `,
-    };
+    });
 
-    await transporter.sendMail(confirmationEmail);
+    if (userResult.error) {
+      console.error('Error sending user email:', userResult.error);
+      throw new Error(userResult.error.message);
+    }
 
     return new Response(
       JSON.stringify({ 
@@ -67,12 +72,6 @@ export async function POST(request) {
     );
   } catch (error) {
     console.error('Error sending email:', error);
-    console.error('SMTP Config:', {
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      user: process.env.SMTP_USER,
-      hasPassword: !!process.env.SMTP_PASSWORD
-    });
     return new Response(
       JSON.stringify({ error: 'Failed to send email. Please try again later.' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
