@@ -1,6 +1,69 @@
 
+'use client';
+
 import Layout from "@/components/layout/Layout"
+import { useState } from "react"
+
 export default function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    const [loading, setLoading] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError('');
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setError(data.error || 'Failed to send message');
+                setLoading(false);
+                return;
+            }
+
+            setSubmitted(true);
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
+
+            // Reset the form after 3 seconds
+            setTimeout(() => {
+                setSubmitted(false);
+            }, 3000);
+        } catch (err) {
+            setError('An error occurred. Please try again later.');
+            console.error('Error:', err);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <>
@@ -77,7 +140,7 @@ export default function Contact() {
                         <div className="row g-xxl-7 g-4">
                             <div className="col-lg-6" data-aos="zoom-in" data-aos-duration={2000}>
                                 <div className="contact-map">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52816169.558200695!2d-161.49265223136007!3d36.102185713814805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sbd!4v1711689726724!5m2!1sen!2sbd" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3911.755862696296!2d75.9167170761933!3d11.352534488833419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba642bccf63225d%3A0x33b1c434f0177904!2sRanzom%20Developers%20LLP!5e0!3m2!1sen!2sin!4v1775142353860!5m2!1sen!2sin" allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
                                 </div>
                             </div>
                             <div className="col-lg-6" data-aos="zoom-in" data-aos-duration={2000}>
@@ -85,33 +148,101 @@ export default function Contact() {
                                     <h3 className="white mb-xxl-15 mb-xl-10 mb-lg-7 mb-5">
                                         Leave A Message
                                     </h3>
-                                    <form action="#">
+                                    {submitted && (
+                                        <div style={{
+                                            padding: '15px',
+                                            marginBottom: '20px',
+                                            backgroundColor: '#d4edda',
+                                            color: '#155724',
+                                            borderRadius: '4px',
+                                            border: '1px solid #c3e6cb'
+                                        }}>
+                                            ✓ Message sent successfully! We'll get back to you soon.
+                                        </div>
+                                    )}
+                                    {error && (
+                                        <div style={{
+                                            padding: '15px',
+                                            marginBottom: '20px',
+                                            backgroundColor: '#f8d7da',
+                                            color: '#721c24',
+                                            borderRadius: '4px',
+                                            border: '1px solid #f5c6cb'
+                                        }}>
+                                            ✗ {error}
+                                        </div>
+                                    )}
+                                    <form onSubmit={handleSubmit}>
                                         <div className="row g-xxl-8 g-xl-6 g-lg-4 g-4">
                                             <div className="col-lg-6">
-                                                <input type="text" placeholder="Name" />
+                                                <input 
+                                                    type="text" 
+                                                    placeholder="Name"
+                                                    name="name"
+                                                    value={formData.name}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
                                             </div>
                                             <div className="col-lg-6">
-                                                <input type="email" placeholder="Email" />
+                                                <input 
+                                                    type="email" 
+                                                    placeholder="Email"
+                                                    name="email"
+                                                    value={formData.email}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
                                             </div>
                                             <div className="col-lg-12">
-                                                <select class="form-select">
-                                                    <option value={1}>
-                                                        Subject
+                                                <select 
+                                                    className="form-select"
+                                                    name="subject"
+                                                    value={formData.subject}
+                                                    onChange={handleChange}
+                                                    required
+                                                >
+                                                    <option value="">Select a subject</option>
+                                                    <option value="General Inquiry">
+                                                        General Inquiry
                                                     </option>
-                                                    <option value={1}>
-                                                        Subject.....
+                                                    <option value="Start a Project">
+                                                        Start a Project
                                                     </option>
-                                                    <option value={1}>
-                                                        Subject.....
+                                                    <option value="Freelance Opportunities">
+                                                        Freelance Opportunities
+                                                    </option>
+                                                    <option value="Careers at RanzomTech">
+                                                        Careers at RanzomTech
+                                                    </option>
+                                                     <option value="Partnerships">
+                                                        Partnerships
+                                                    </option>
+                                                    <option value="Support">
+                                                        Support
+                                                    </option>
+                                                    <option value="Other">
+                                                        Other
                                                     </option>
                                                 </select>
                                             </div>
                                             <div className="col-lg-12">
-                                                <textarea name="messages" rows={5} placeholder="Message" />
+                                                <textarea 
+                                                    name="message" 
+                                                    rows={5} 
+                                                    placeholder="Message"
+                                                    value={formData.message}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
                                             </div>
                                             <div className="col-lg-5">
-                                                <button type="submit" className="submit-btn">
-                                                    Send Message
+                                                <button 
+                                                    type="submit" 
+                                                    className="submit-btn"
+                                                    disabled={loading}
+                                                >
+                                                    {loading ? 'Sending...' : 'Send Message'}
                                                 </button>
                                             </div>
                                         </div>
