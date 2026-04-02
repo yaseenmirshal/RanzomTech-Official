@@ -1,69 +1,6 @@
 
-'use client';
-
 import Layout from "@/components/layout/Layout"
-import { useState } from "react"
-
 export default function Contact() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
-    const [loading, setLoading] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
-    const [error, setError] = useState('');
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setError('');
-
-        try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const data = await response.json();
-
-            if (!response.ok) {
-                setError(data.error || 'Failed to send message');
-                setLoading(false);
-                return;
-            }
-
-            setSubmitted(true);
-            setFormData({
-                name: '',
-                email: '',
-                subject: '',
-                message: ''
-            });
-
-            // Reset the form after 3 seconds
-            setTimeout(() => {
-                setSubmitted(false);
-            }, 3000);
-        } catch (err) {
-            setError('An error occurred. Please try again later.');
-            console.error('Error:', err);
-        } finally {
-            setLoading(false);
-        }
-    };
 
     return (
         <>
@@ -148,101 +85,45 @@ export default function Contact() {
                                     <h3 className="white mb-xxl-15 mb-xl-10 mb-lg-7 mb-5">
                                         Leave A Message
                                     </h3>
-                                    {submitted && (
-                                        <div style={{
-                                            padding: '15px',
-                                            marginBottom: '20px',
-                                            backgroundColor: '#d4edda',
-                                            color: '#155724',
-                                            borderRadius: '4px',
-                                            border: '1px solid #c3e6cb'
-                                        }}>
-                                            ✓ Message sent successfully! We'll get back to you soon.
-                                        </div>
-                                    )}
-                                    {error && (
-                                        <div style={{
-                                            padding: '15px',
-                                            marginBottom: '20px',
-                                            backgroundColor: '#f8d7da',
-                                            color: '#721c24',
-                                            borderRadius: '4px',
-                                            border: '1px solid #f5c6cb'
-                                        }}>
-                                            ✗ {error}
-                                        </div>
-                                    )}
-                                    <form onSubmit={handleSubmit}>
+                                    <form action="#">
                                         <div className="row g-xxl-8 g-xl-6 g-lg-4 g-4">
                                             <div className="col-lg-6">
-                                                <input 
-                                                    type="text" 
-                                                    placeholder="Name"
-                                                    name="name"
-                                                    value={formData.name}
-                                                    onChange={handleChange}
-                                                    required
-                                                />
+                                                <input type="text" placeholder="Name" />
                                             </div>
                                             <div className="col-lg-6">
-                                                <input 
-                                                    type="email" 
-                                                    placeholder="Email"
-                                                    name="email"
-                                                    value={formData.email}
-                                                    onChange={handleChange}
-                                                    required
-                                                />
+                                                <input type="email" placeholder="Email" />
                                             </div>
                                             <div className="col-lg-12">
-                                                <select 
-                                                    className="form-select"
-                                                    name="subject"
-                                                    value={formData.subject}
-                                                    onChange={handleChange}
-                                                    required
-                                                >
-                                                    <option value="">Select a subject</option>
-                                                    <option value="General Inquiry">
+                                                <select class="form-select">
+                                                    <option value={1}>
                                                         General Inquiry
                                                     </option>
-                                                    <option value="Start a Project">
+                                                    <option value={1}>
                                                         Start a Project
                                                     </option>
-                                                    <option value="Freelance Opportunities">
+                                                    <option value={1}>
                                                         Freelance Opportunities
                                                     </option>
-                                                    <option value="Careers at RanzomTech">
+                                                    <option value={1}>
                                                         Careers at RanzomTech
                                                     </option>
-                                                     <option value="Partnerships">
+                                                     <option value={1}>
                                                         Partnerships
                                                     </option>
-                                                    <option value="Support">
+                                                    <option value={1}>
                                                         Support
                                                     </option>
-                                                    <option value="Other">
+                                                    <option value={1}>
                                                         Other
                                                     </option>
                                                 </select>
                                             </div>
                                             <div className="col-lg-12">
-                                                <textarea 
-                                                    name="message" 
-                                                    rows={5} 
-                                                    placeholder="Message"
-                                                    value={formData.message}
-                                                    onChange={handleChange}
-                                                    required
-                                                />
+                                                <textarea name="messages" rows={5} placeholder="Message" />
                                             </div>
                                             <div className="col-lg-5">
-                                                <button 
-                                                    type="submit" 
-                                                    className="submit-btn"
-                                                    disabled={loading}
-                                                >
-                                                    {loading ? 'Sending...' : 'Send Message'}
+                                                <button type="submit" className="submit-btn">
+                                                    Send Message
                                                 </button>
                                             </div>
                                         </div>
