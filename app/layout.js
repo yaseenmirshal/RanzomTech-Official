@@ -24,7 +24,7 @@ export const metadata = {
     description: 'Digital Agency',
     icons: {
         icon: '/favicon.ico',
-        apple: '/assets/img/logo/favicon.png',
+        apple: '/assets/img/logo/favicon.ico',
     },
 }
 
