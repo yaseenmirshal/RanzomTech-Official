@@ -23,10 +23,7 @@ export const metadata = {
     title: 'RanzomTech',
     description: 'Digital Agency',
     icons: {
-        icon: [
-            { url: '/favicon.ico', type: 'image/x-icon' },
-            { url: '/assets/img/logo/favicon.png', type: 'image/png' },
-        ],
+        icon: '/favicon.ico',
         apple: '/assets/img/logo/favicon.png',
     },
 }
