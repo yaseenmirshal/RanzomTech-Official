@@ -5,11 +5,13 @@ import Layout from "@/components/layout/Layout"
 import ThankYouPopup from "@/components/elements/ThankYouPopup"
 import { useState } from "react"
 
+console.log('Contact page loaded as client component');
+
 export default function Contact() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        subject: '',
+        subject: 'General Inquiry',
         message: ''
     });
     const [loading, setLoading] = useState(false);
@@ -24,9 +26,13 @@ export default function Contact() {
         }));
     };
 
+    const handleButtonClick = () => {
+        console.log('Button clicked directly!');
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted!');
+        console.log('Form submitted - onSubmit fired!');
         setLoading(true);
         setError('');
 
@@ -58,7 +64,7 @@ export default function Contact() {
             setFormData({
                 name: '',
                 email: '',
-                subject: '',
+                subject: 'General Inquiry',
                 message: ''
             });
 
@@ -203,7 +209,6 @@ export default function Contact() {
                                                     onChange={handleChange}
                                                     required
                                                 >
-                                                    <option value="">Select a subject</option>
                                                     <option value="General Inquiry">
                                                         General Inquiry
                                                     </option>
