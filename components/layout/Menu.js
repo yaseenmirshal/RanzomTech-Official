@@ -81,7 +81,7 @@ export default function Menu() {
 
                 <li className="menu-item position-relative">
                     <Link href="/contact" className="fw_500">
-                        Contact
+                        Contact Us
                     </Link>
                 </li>
             </ul>
