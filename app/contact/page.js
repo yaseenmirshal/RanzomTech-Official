@@ -1,11 +1,7 @@
-
 'use client';
 
 import Layout from "@/components/layout/Layout"
-import ThankYouPopup from "@/components/elements/ThankYouPopup"
 import { useState } from "react"
-
-console.log('Contact page loaded as client component');
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -14,9 +10,6 @@ export default function Contact() {
         subject: 'General Inquiry',
         message: ''
     });
-    const [loading, setLoading] = useState(false);
-    const [showThankYou, setShowThankYou] = useState(false);
-    const [error, setError] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,68 +19,29 @@ export default function Contact() {
         }));
     };
 
-    const handleButtonClick = () => {
-        console.log('Button clicked directly!');
-    };
-
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form submitted - onSubmit fired!');
-        setLoading(true);
-        setError('');
-
-        try {
-            console.log('Sending data:', formData);
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-
-            console.log('Response status:', response.status);
-            const data = await response.json();
-            console.log('Response data:', data);
-
-            if (!response.ok) {
-                setError(data.error || 'Failed to send message');
-                setLoading(false);
-                return;
-            }
-
-            // Show thank you popup
-            console.log('Showing thank you popup');
-            setShowThankYou(true);
-            
-            // Reset form
-            setFormData({
-                name: '',
-                email: '',
-                subject: 'General Inquiry',
-                message: ''
-            });
-
-            // Auto close popup after 5 seconds
-            setTimeout(() => {
-                setShowThankYou(false);
-            }, 5000);
-        } catch (err) {
-            console.error('Catch error:', err);
-            setError('An error occurred. Please try again later.');
-        } finally {
-            setLoading(false);
-        }
+        
+        // Create mailto link
+        const subject = formData.subject;
+        const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+        const mailtoLink = `mailto:info@ranzomtech.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        // Redirect to email
+        window.location.href = mailtoLink;
+        
+        // Reset form
+        setFormData({
+            name: '',
+            email: '',
+            subject: 'General Inquiry',
+            message: ''
+        });
     };
 
     return (
         <>
-
             <Layout headerStyle={2} footerStyle={2} breadcrumbTitle="Contact Us">
-                <ThankYouPopup 
-                    isVisible={showThankYou} 
-                    onClose={() => setShowThankYou(false)} 
-                />
                 <section className="contact-section pt-space pb-space">
                     <div className="container">
                         <div className="row g-xl-7 g-4 mb-xxl-7 mb-6 justify-content-center">
@@ -186,8 +140,6 @@ export default function Contact() {
                                                     type="text" 
                                                     placeholder="Name"
                                                     name="name"
-                                                    value={formData.name}
-                                                    onChange={handleChange}
                                                     required
                                                 />
                                             </div>
@@ -196,8 +148,6 @@ export default function Contact() {
                                                     type="email" 
                                                     placeholder="Email"
                                                     name="email"
-                                                    value={formData.email}
-                                                    onChange={handleChange}
                                                     required
                                                 />
                                             </div>
@@ -205,9 +155,8 @@ export default function Contact() {
                                                 <select 
                                                     className="form-select"
                                                     name="subject"
-                                                    value={formData.subject}
-                                                    onChange={handleChange}
                                                     required
+                                                    defaultValue="General Inquiry"
                                                 >
                                                     <option value="General Inquiry">
                                                         General Inquiry
@@ -237,8 +186,6 @@ export default function Contact() {
                                                     name="message" 
                                                     rows={5} 
                                                     placeholder="Message"
-                                                    value={formData.message}
-                                                    onChange={handleChange}
                                                     required
                                                 />
                                             </div>
@@ -246,9 +193,8 @@ export default function Contact() {
                                                 <button 
                                                     type="submit" 
                                                     className="submit-btn"
-                                                    disabled={loading}
                                                 >
-                                                    {loading ? 'Sending...' : 'Send Message'}
+                                                    Send Message
                                                 </button>
                                             </div>
                                         </div>
