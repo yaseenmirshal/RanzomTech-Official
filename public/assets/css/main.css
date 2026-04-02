@@ -119,6 +119,14 @@ a {
     transition: all 0.4s ease-in-out;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--white);
+}
+
 p {
     margin: 0px;
     transition: all 0.4s ease-in-out;
