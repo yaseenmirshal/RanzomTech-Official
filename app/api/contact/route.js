@@ -25,7 +25,7 @@ export async function POST(request) {
 
     // Email to RanzomTech
     const mailOptions = {
-      from: email,
+      from: 'info@ranzomtech.com',
       to: 'info@ranzomtech.com',
       subject: `New Contact Form Submission: ${subject}`,
       html: `
