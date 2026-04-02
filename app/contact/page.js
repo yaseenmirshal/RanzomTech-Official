@@ -1,42 +1,30 @@
 'use client';
 
 import Layout from "@/components/layout/Layout"
-import { useState } from "react"
 
 export default function Contact() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: 'General Inquiry',
-        message: ''
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         
+        // Get form values from FormData
+        const formData = new FormData(e.target);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const subject = formData.get('subject');
+        const message = formData.get('message');
+        
         // Create mailto link
-        const subject = formData.subject;
-        const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
-        const mailtoLink = `mailto:info@ranzomtech.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        const emailSubject = subject;
+        const emailBody = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+        const mailtoLink = `mailto:info@ranzomtech.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
         
         // Redirect to email
         window.location.href = mailtoLink;
         
-        // Reset form
-        setFormData({
-            name: '',
-            email: '',
-            subject: 'General Inquiry',
-            message: ''
-        });
+        // Reset form after short delay
+        setTimeout(() => {
+            e.target.reset();
+        }, 100);
     };
 
     return (
