@@ -1,8 +1,68 @@
+'use client';
+
 import Link from "next/link"
 import { FaInstagram, FaFacebookF, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
+import { useState } from "react";
 
 
 export default function Footer2() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError('');
+
+        try {
+            const response = await fetch('/api/footer-contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setError(data.error || 'Failed to send message');
+                setLoading(false);
+                return;
+            }
+
+            setSuccess(true);
+            setFormData({
+                name: '',
+                email: '',
+                message: ''
+            });
+
+            setTimeout(() => {
+                setSuccess(false);
+            }, 4000);
+        } catch (err) {
+            console.error('Error:', err);
+            setError('An error occurred. Please try again later.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <>
 
@@ -161,36 +221,88 @@ export default function Footer2() {
                                 </div>
                             </div>
                             <div className="col-xxl-5 col-xl-6 col-lg-5">
-                                <form action="#" className="common-form">
+                                {success && (
+                                    <div style={{
+                                        padding: '15px',
+                                        marginBottom: '20px',
+                                        backgroundColor: '#d4edda',
+                                        color: '#155724',
+                                        borderRadius: '4px',
+                                        border: '1px solid #c3e6cb'
+                                    }}>
+                                        ✓ Message sent successfully! We'll get back to you soon.
+                                    </div>
+                                )}
+                                {error && (
+                                    <div style={{
+                                        padding: '15px',
+                                        marginBottom: '20px',
+                                        backgroundColor: '#f8d7da',
+                                        color: '#721c24',
+                                        borderRadius: '4px',
+                                        border: '1px solid #f5c6cb'
+                                    }}>
+                                        ✗ {error}
+                                    </div>
+                                )}
+                                <form onSubmit={handleSubmit} className="common-form">
                                     <div className="row g-xxl-8 g-xl-7 g-6">
                                         <div className="col-xl-6" data-aos="zoom-in-right" data-aos-duration={1400}>
                                             <div className="gorm-grp">
                                                 <label className="fw-medium white mb-xxl-5 mb-xl-4 mb-3" htmlFor="name">Your
                                                     Name*</label>
-                                                <input id="name" type="text" placeholder="Your Name" />
+                                                <input 
+                                                    id="name" 
+                                                    type="text" 
+                                                    placeholder="Your Name"
+                                                    name="name"
+                                                    value={formData.name}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
                                             </div>
                                         </div>
                                         <div className="col-xl-6" data-aos="zoom-in-right" data-aos-duration={1400}>
                                             <div className="gorm-grp">
-                                                <label className="fw-medium white mb-xxl-5 mb-xl-4 mb-3" htmlFor="emails">Your
+                                                <label className="fw-medium white mb-xxl-5 mb-xl-4 mb-3" htmlFor="email">Your
                                                     Email*</label>
-                                                <input id="emails" type="text" placeholder="Your Email" />
+                                                <input 
+                                                    id="email" 
+                                                    type="email" 
+                                                    placeholder="Your Email"
+                                                    name="email"
+                                                    value={formData.email}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
                                             </div>
                                         </div>
                                         <div className="col-xl-12" data-aos="zoom-in-right" data-aos-duration={1400}>
                                             <div className="gorm-grp">
-                                                <label htmlFor="mess" className="fw-medium white mb-xxl-5 mb-xl-4 mb-3">Your
+                                                <label htmlFor="message" className="fw-medium white mb-xxl-5 mb-xl-4 mb-3">Your
                                                     Message*</label>
-                                                <textarea name="write" id="mess" rows={5} placeholder="Write Message" />
+                                                <textarea 
+                                                    name="message" 
+                                                    id="message" 
+                                                    rows={5} 
+                                                    placeholder="Write Message"
+                                                    value={formData.message}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
                                             </div>
                                         </div>
                                         <div className="col-xl-12" data-aos="zoom-in-right" data-aos-duration={1400}>
                                             <div className="gorm-grp">
-                                                <button type="submit" className="getin-touch d-flex align-items-center justify-content-center gap-3 white-clr p-xxl-4 p-xl-3 p-lg-2 p-2 w-100 text-semibold">
+                                                <button 
+                                                    type="submit" 
+                                                    className="getin-touch d-flex align-items-center justify-content-center gap-3 white-clr p-xxl-4 p-xl-3 p-lg-2 p-2 w-100 text-semibold"
+                                                    disabled={loading}
+                                                >
                                                     <span className="icons">
                                                         <i className="fas fa-arrow-up theme-clr" />
                                                     </span>
-                                                    Get In Touch
+                                                    {loading ? 'Sending...' : 'Get In Touch'}
                                                 </button>
                                             </div>
                                         </div>
