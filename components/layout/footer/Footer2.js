@@ -1,29 +1,55 @@
+'use cleint'
 import Link from "next/link"
+import { useState } from "react"
 import { FaInstagram, FaFacebookF, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
 
-
 export default function Footer2() {
-    const handleFooterSubmit = (e) => {
-        e.preventDefault();
-        
-        // Get form values
-        const formData = new FormData(e.target);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-        
-        // Create mailto link
-        const subject = `New message from ${name}`;
-        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-        const mailtoLink = `mailto:info@ranzomtech.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        
-        // Redirect to email
-        window.location.href = mailtoLink;
+    const [status, setStatus] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleFooterSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
+
+    const formData = new FormData(e.target);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const message = formData.get('message');
+
+    const payload = {
+        name,
+        email,
+        message,
     };
+
+    try {
+        const res = await fetch("/api/footer-contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        });
+
+        const data = await res.json();
+        console.log("Response from API:", data);
+
+        if (res.ok && data.success) {
+            setStatus("success");
+            e.target.reset();
+        } else {
+            console.error("API Error:", data.error || data.message);
+            setStatus("error");
+        }
+    } catch (err) {
+        console.error("Fetch error:", err);
+        setStatus("error");
+    } finally {
+        setLoading(false);
+    }
+};
 
     return (
         <>
-
             <footer className="footer-version-two bg2-clr">
                 <div className="footer-topversion-two pt-20 pb-20">
                     <div className="container">
@@ -32,7 +58,7 @@ export default function Footer2() {
                                 <div className="footer-widget">
                                     <div className="footer-lets-title mb-xxl-20 mb-xl-15 mb-lg-10 mb-8">
                                         <span className="fdisplay-title d-flex gap-2 align-items-center mb-xxl-10 mb-xl-8 mb-lg-6 mb-6" data-aos="zoom-in-right" data-aos-duration={1400}>
-                                            Let’s <span className="talk" data-aos="zoom-in-up" data-aos-duration={1800}>talk!</span>
+                                            Let's <span className="talk" data-aos="zoom-in-up" data-aos-duration={1800}>talk!</span>
                                         </span>
                                         <p className="pra-clr" data-aos="zoom-in" data-aos-duration={1800}>
                                             Bring to the table win-win survival strategies to ensure proactive domination. At
@@ -114,66 +140,28 @@ export default function Footer2() {
                                                 </span>
                                             </span>
 
- <ul className="common-social pt-5 d-flex align-items-center gap-2">
-  {/* Instagram */}
-  <li data-aos="zoom-in-right" data-aos-duration={1400}>
-    <a
-      href="https://www.instagram.com/ranzomtech/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="social-link d-center"
-      aria-label="Instagram"
-    >
-      <FaInstagram />
-    </a>
-  </li>
-
-  {/* Facebook */}
-  <li data-aos="zoom-in-right" data-aos-duration={1600}>
-    <a
-      href="https://www.facebook.com/profile.php?id=61573078530968"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="social-link d-center"
-      aria-label="Facebook"
-    >
-      <FaFacebookF />
-    </a>
-  </li>
-
-  {/* WhatsApp */}
-  <li data-aos="zoom-in-right" data-aos-duration={1800}>
-    <a
-      href="https://wa.me/919544534677"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="social-link d-center"
-      aria-label="WhatsApp"
-    >
-      <FaWhatsapp />
-    </a>
-  </li>
-
-  {/* LinkedIn */}
-  <li data-aos="zoom-in-right" data-aos-duration={1900}>
-    <a
-      href="https://www.linkedin.com/company/ranzomtech/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="social-link d-center"
-      aria-label="LinkedIn"
-    >
-      <FaLinkedinIn />
-    </a>
-  </li>
-</ul>
-
-
-
-
-
-
-
+                                            <ul className="common-social pt-5 d-flex align-items-center gap-2">
+                                                <li data-aos="zoom-in-right" data-aos-duration={1400}>
+                                                    <a href="https://www.instagram.com/ranzomtech/" target="_blank" rel="noopener noreferrer" className="social-link d-center" aria-label="Instagram">
+                                                        <FaInstagram />
+                                                    </a>
+                                                </li>
+                                                <li data-aos="zoom-in-right" data-aos-duration={1600}>
+                                                    <a href="https://www.facebook.com/profile.php?id=61573078530968" target="_blank" rel="noopener noreferrer" className="social-link d-center" aria-label="Facebook">
+                                                        <FaFacebookF />
+                                                    </a>
+                                                </li>
+                                                <li data-aos="zoom-in-right" data-aos-duration={1800}>
+                                                    <a href="https://wa.me/919544534677" target="_blank" rel="noopener noreferrer" className="social-link d-center" aria-label="WhatsApp">
+                                                        <FaWhatsapp />
+                                                    </a>
+                                                </li>
+                                                <li data-aos="zoom-in-right" data-aos-duration={1900}>
+                                                    <a href="https://www.linkedin.com/company/ranzomtech/" target="_blank" rel="noopener noreferrer" className="social-link d-center" aria-label="LinkedIn">
+                                                        <FaLinkedinIn />
+                                                    </a>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -183,11 +171,10 @@ export default function Footer2() {
                                     <div className="row g-xxl-8 g-xl-7 g-6">
                                         <div className="col-xl-6" data-aos="zoom-in-right" data-aos-duration={1400}>
                                             <div className="gorm-grp">
-                                                <label className="fw-medium white mb-xxl-5 mb-xl-4 mb-3" htmlFor="name">Your
-                                                    Name*</label>
-                                                <input 
-                                                    id="name" 
-                                                    type="text" 
+                                                <label className="fw-medium white mb-xxl-5 mb-xl-4 mb-3" htmlFor="name">Your Name*</label>
+                                                <input
+                                                    id="name"
+                                                    type="text"
                                                     placeholder="Your Name"
                                                     name="name"
                                                     required
@@ -196,11 +183,10 @@ export default function Footer2() {
                                         </div>
                                         <div className="col-xl-6" data-aos="zoom-in-right" data-aos-duration={1400}>
                                             <div className="gorm-grp">
-                                                <label className="fw-medium white mb-xxl-5 mb-xl-4 mb-3" htmlFor="email">Your
-                                                    Email*</label>
-                                                <input 
-                                                    id="email" 
-                                                    type="email" 
+                                                <label className="fw-medium white mb-xxl-5 mb-xl-4 mb-3" htmlFor="email">Your Email*</label>
+                                                <input
+                                                    id="email"
+                                                    type="email"
                                                     placeholder="Your Email"
                                                     name="email"
                                                     required
@@ -209,27 +195,45 @@ export default function Footer2() {
                                         </div>
                                         <div className="col-xl-12" data-aos="zoom-in-right" data-aos-duration={1400}>
                                             <div className="gorm-grp">
-                                                <label htmlFor="message" className="fw-medium white mb-xxl-5 mb-xl-4 mb-3">Your
-                                                    Message*</label>
-                                                <textarea 
-                                                    name="message" 
-                                                    id="message" 
-                                                    rows={5} 
+                                                <label htmlFor="message" className="fw-medium white mb-xxl-5 mb-xl-4 mb-3">Your Message*</label>
+                                                <textarea
+                                                    name="message"
+                                                    id="message"
+                                                    rows={5}
                                                     placeholder="Write Message"
                                                     required
                                                 />
                                             </div>
                                         </div>
+
+                                        {/* Status Messages */}
+                                        {status === "success" && (
+                                            <div className="col-xl-12">
+                                                <p style={{ color: "#E3FF04", fontSize: "14px", margin: 0 }}>
+                                                    ✓ Message sent successfully! We'll get back to you soon.
+                                                </p>
+                                            </div>
+                                        )}
+                                        {status === "error" && (
+                                            <div className="col-xl-12">
+                                                <p style={{ color: "#ff4d4d", fontSize: "14px", margin: 0 }}>
+                                                    ✗ Something went wrong. Please try again or email us directly.
+                                                </p>
+                                            </div>
+                                        )}
+
                                         <div className="col-xl-12" data-aos="zoom-in-right" data-aos-duration={1400}>
                                             <div className="gorm-grp">
-                                                <button 
-                                                    type="submit" 
+                                                <button
+                                                    type="submit"
+                                                    disabled={loading}
                                                     className="getin-touch d-flex align-items-center justify-content-center gap-3 white-clr p-xxl-4 p-xl-3 p-lg-2 p-2 w-100 text-semibold"
+                                                    style={{ opacity: loading ? 0.7 : 1, cursor: loading ? "not-allowed" : "pointer" }}
                                                 >
                                                     <span className="icons">
                                                         <i className="fas fa-arrow-up theme-clr" />
                                                     </span>
-                                                    Get In Touch
+                                                    {loading ? "Sending..." : "Get In Touch"}
                                                 </button>
                                             </div>
                                         </div>
@@ -246,12 +250,8 @@ export default function Footer2() {
                                 © All Copyright {new Date().getFullYear()} by <Link href="/" className="theme-clr">RanzomTech</Link>
                             </p>
                             <Link href="/" className="footer-logov1 m-md-0 m-auto">
-  <img
-    src="/assets/img/logo/logo.png"
-    alt="img"
-    className="footer-under-logo"
-  />
-</Link>
+                                <img src="/assets/img/logo/logo.png" alt="img" className="footer-under-logo" />
+                            </Link>
                             <Link href="/#" className="pra-clr">
                                 Terms &amp; Conditions Privacy Policy
                             </Link>
@@ -259,7 +259,6 @@ export default function Footer2() {
                     </div>
                 </div>
             </footer>
-
         </>
     )
 }

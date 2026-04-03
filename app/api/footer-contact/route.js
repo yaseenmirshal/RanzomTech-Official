@@ -1,7 +1,5 @@
 import { Resend } from 'resend';
 
-export const dynamic = 'force-dynamic';
-
 export async function POST(request) {
   try {
     const { name, email, message } = await request.json();
@@ -16,6 +14,7 @@ export async function POST(request) {
 
     // Check if API key is configured
     if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is not configured");
       return new Response(
         JSON.stringify({ error: 'Email service is not configured' }),
         { status: 500, headers: { 'Content-Type': 'application/json' } }
@@ -24,13 +23,15 @@ export async function POST(request) {
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
+    console.log("Attempting to send email to info@ranzomtech.com from:", name);
+
     // Send email to RanzomTech
     const adminResult = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'info@ranzomtech.com',
       to: 'info@ranzomtech.com',
-      subject: `New Footer Contact Form Submission from ${name}`,
+      subject: `Footer Contact Form Submission from ${name}`,
       html: `
-        <h2>New Contact Form Submission (Footer)</h2>
+        <h2>Footer Contact Form Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong></p>
@@ -38,13 +39,16 @@ export async function POST(request) {
       `,
     });
 
+    console.log("Resend admin result:", adminResult);
+
     if (adminResult.error) {
+      console.error("Failed to send admin email:", adminResult.error);
       throw new Error(adminResult.error.message);
     }
 
     // Send confirmation email to user
     const userResult = await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'info@ranzomtech.com',
       to: email,
       subject: 'We received your message - RanzomTech',
       html: `
@@ -57,7 +61,10 @@ export async function POST(request) {
       `,
     });
 
+    console.log("Resend user result:", userResult);
+
     if (userResult.error) {
+      console.error("Failed to send confirmation email:", userResult.error);
       throw new Error(userResult.error.message);
     }
 
@@ -71,7 +78,7 @@ export async function POST(request) {
   } catch (error) {
     console.error('Error sending email:', error);
     return new Response(
-      JSON.stringify({ error: 'Failed to send email. Please try again later.' }),
+      JSON.stringify({ error: error.message || 'Failed to send email. Please try again later.' }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
   }
