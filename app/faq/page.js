@@ -138,7 +138,7 @@ export default function Faq() {
                                             <div className="content-area" style={{ display: `${isAccordion == 8 ? "block" : "none"}` }}>
                                                 <div className="content-body pt-4">
                                                     <p className="pra-clr">
-                                                       We don’t just deliver—we guide you through decisions, helping you choose what’s best for your growth.
+                                                       We don’t just deliver—we guide you through decisions, helping you choose what’s best for your business.
                                                     </p>
                                                 </div>
                                             </div>
