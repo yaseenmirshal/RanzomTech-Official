@@ -1,10 +1,16 @@
 'use client';
 
+import { useState } from 'react';
 import Layout from "@/components/layout/Layout"
 
 export default function Contact() {
-    const handleSubmit = (e) => {
+    const [status, setStatus] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setStatus("");
         
         // Get form values from FormData
         const formData = new FormData(e.target);
@@ -13,18 +19,36 @@ export default function Contact() {
         const subject = formData.get('subject');
         const message = formData.get('message');
         
-        // Create mailto link
-        const emailSubject = subject;
-        const emailBody = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-        const mailtoLink = `mailto:info@ranzomtech.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-        
-        // Redirect to email
-        window.location.href = mailtoLink;
-        
-        // Reset form after short delay
-        setTimeout(() => {
-            e.target.reset();
-        }, 100);
+        const payload = {
+            name,
+            email,
+            subject,
+            message,
+        };
+
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+
+            const data = await res.json();
+            console.log("Response from API:", data);
+
+            if (res.ok && data.success) {
+                setStatus("success");
+                e.target.reset();
+            } else {
+                console.error("API Error:", data.error || data.message);
+                setStatus("error");
+            }
+        } catch (err) {
+            console.error("Fetch error:", err);
+            setStatus("error");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -165,12 +189,29 @@ export default function Contact() {
                                                     required
                                                 />
                                             </div>
+                                            {/* Status Messages */}
+                                            {status === "success" && (
+                                                <div className="col-lg-12">
+                                                    <p style={{ color: "#E3FF04", fontSize: "14px", margin: 0 }}>
+                                                        ✓ Message sent successfully! We'll get back to you soon.
+                                                    </p>
+                                                </div>
+                                            )}
+                                            {status === "error" && (
+                                                <div className="col-lg-12">
+                                                    <p style={{ color: "#ff4d4d", fontSize: "14px", margin: 0 }}>
+                                                        ✗ Something went wrong. Please try again or email us directly.
+                                                    </p>
+                                                </div>
+                                            )}
                                             <div className="col-lg-5">
                                                 <button 
                                                     type="submit" 
+                                                    disabled={loading}
                                                     className="submit-btn"
+                                                    style={{ opacity: loading ? 0.7 : 1, cursor: loading ? "not-allowed" : "pointer" }}
                                                 >
-                                                    Send Message
+                                                    {loading ? "Sending..." : "Send Message"}
                                                 </button>
                                             </div>
                                         </div>
