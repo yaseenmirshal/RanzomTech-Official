@@ -53,7 +53,7 @@ export default function Offer1() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration={1000} data-aos-delay={700}>
+                        {/* <div className="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration={1000} data-aos-delay={700}>
                             <div className="offer-item d-md-flex d-grid gap-xxl-6 gap-xl-5 gap-lg-4 gap-3 p-xxl-6 p-xl-5 p-4">
                                 <div className="icon-area d-md-grid d-flex justify-content-between mb-md-0 mb-4">
                                     <div className="icon">
@@ -78,7 +78,7 @@ export default function Offer1() {
                                     </Link>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration={1000} data-aos-delay={900}>
                             <div className="offer-item d-md-flex d-grid gap-xxl-6 gap-xl-5 gap-lg-4 gap-3 p-xxl-6 p-xl-5 p-4">
                                 <div className="icon-area d-md-grid d-flex justify-content-between mb-md-0 mb-4">
@@ -91,7 +91,7 @@ export default function Offer1() {
                                 </div>
                                 <div className="content">
                                     <h5 className="white-clr mb-xxl-6 mb-xl-5 mb-4">
-                                        Digital Marketing 
+                                        Lead Generation 
                                     </h5>
                                     <p className="pra-clr mb-xxl-6 mb-xl-5 mb-4">
                                     Growth. A marketing system built to attract attention, generate leads, and grow your business consistently
@@ -106,7 +106,7 @@ export default function Offer1() {
                             </div>
                         </div>
 
-                        <div className="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration={1000} data-aos-delay={900}>
+                        {/* <div className="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration={1000} data-aos-delay={900}>
                             <div className="offer-item d-md-flex d-grid gap-xxl-6 gap-xl-5 gap-lg-4 gap-3 p-xxl-6 p-xl-5 p-4">
                                 <div className="icon-area d-md-grid d-flex justify-content-between mb-md-0 mb-4">
                                     <div className="icon">
@@ -131,9 +131,9 @@ export default function Offer1() {
                                     </Link>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div className="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration={1000} data-aos-delay={900}>
+                        {/* <div className="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration={1000} data-aos-delay={900}>
                             <div className="offer-item d-md-flex d-grid gap-xxl-6 gap-xl-5 gap-lg-4 gap-3 p-xxl-6 p-xl-5 p-4">
                                 <div className="icon-area d-md-grid d-flex justify-content-between mb-md-0 mb-4">
                                     <div className="icon">
@@ -158,7 +158,7 @@ export default function Offer1() {
                                     </Link>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration={1000} data-aos-delay={900}>
                             <div className="offer-item d-md-flex d-grid gap-xxl-6 gap-xl-5 gap-lg-4 gap-3 p-xxl-6 p-xl-5 p-4">
@@ -172,7 +172,7 @@ export default function Offer1() {
                                 </div>
                                 <div className="content">
                                     <h5 className="white-clr mb-xxl-6 mb-xl-5 mb-4">
-                                       Ai Integration
+                                       Ai Automation
                                     </h5>
                                     <p className="pra-clr mb-xxl-6 mb-xl-5 mb-4">
                                     Automation. AI integration that saves time, improves workflows, and delivers smarter business operations
