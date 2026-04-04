@@ -1,5 +1,4 @@
 'use client'
-import Link from 'next/link'
 import { FaWhatsapp } from 'react-icons/fa'
 
 export default function WhatsAppIcon() {
@@ -9,9 +8,9 @@ export default function WhatsAppIcon() {
 
     return (
         <div className="whatsapp-wrapper">
-            <Link href={whatsappURL} target="_blank" rel="noopener noreferrer" className="whatsapp-icon">
+            <a href={whatsappURL} target="_blank" rel="noopener noreferrer" className="whatsapp-icon">
                 <FaWhatsapp size={52} />
-            </Link>
+            </a>
 
             <style jsx>{`
                 .whatsapp-wrapper {
@@ -28,7 +27,7 @@ export default function WhatsAppIcon() {
                     justify-content: center;
                     width: 80px;
                     height: 80px;
-                    background-color: #25d366;
+                    
                     border-radius: 50%;
                     color: white;
                     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -37,7 +36,7 @@ export default function WhatsAppIcon() {
                 }
 
                 .whatsapp-icon:hover {
-                    background-color: #20ba5f;
+                    
                     color: #20ba5f;
                     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
                     transform: scale(1.1);
