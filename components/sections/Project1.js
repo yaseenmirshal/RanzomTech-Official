@@ -18,7 +18,7 @@ export default function Project1() {
                                         <span>+</span>
                                     </h2>
                                     <span className="pra-clr">
-                                        Team member
+                                        Team members
                                     </span>
                                 </div>
                             </div>
