@@ -3,6 +3,7 @@
 import AOS from 'aos'
 import { useEffect, useState } from "react"
 import BackToTop from '../elements/BackToTop'
+import WhatsAppIcon from '../elements/WhatsAppIcon'
 import Breadcrumb from './Breadcrumb'
 import Search from "./Search"
 import Sidebar from "./Sidebar"
@@ -70,6 +71,8 @@ export default function Layout({ headerStyle, footerStyle, breadcrumbTitle, chil
             <Sidebar isSidebar={isSidebar} handleSidebar={handleSidebar} />
 
             <BackToTop target="#top" />
+            
+            <WhatsAppIcon />
         </>
     )
 }
