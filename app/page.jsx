@@ -2,6 +2,7 @@ import Layout from "@/components/layout/Layout"
 import About2 from "@/components/sections/About2"
 import CaseStudy2 from "@/components/sections/CaseStudy2"
 import CaseStudy3 from "@/components/sections/CaseStudy3"
+import Hero2 from "@/components/sections/Hero2"
 import Hero3 from "@/components/sections/Hero3"
 import Offer1 from "@/components/sections/Offer1"
 import Pricing1 from "@/components/sections/Pricing1"
@@ -17,7 +18,7 @@ export default function Home() {
             <Layout headerStyle={2} footerStyle={2}>
                 <div className="position-relative overflow-hidden">
                     <div className="line-shape cus-z-1 first w-100 h-100 d-flex flex-wrap" />
-                    <Hero3 />
+                    <Hero2 />
                     
                     <Offer1/>
                     <About2/>

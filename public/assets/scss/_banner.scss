@@ -485,6 +485,24 @@
 	}
 }
 
+.hero-image {
+  width: 100%;
+  max-width: 200px; /* reduced */
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .hero-image {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image {
+    max-width: 120px;
+  }
+}
+
 //Hero Section Version two
 
 //Hero Section Version three

@@ -24,7 +24,7 @@ export default function Hero3() {
           data-aos-duration={1400}
           data-aos-delay={5}
         >
-          Expert <span className="italic theme-clr">Digital</span>
+          We Build<span className="italic theme-clr">Systems</span>
         </span>
 
         <span
@@ -38,7 +38,7 @@ export default function Hero3() {
               fill="#E3FF04"
             />
           </svg>
-          <span className="italic">services for</span>
+          <span className="italic"> That Run Your</span>
         </span>
 
         <span
@@ -46,7 +46,7 @@ export default function Hero3() {
           data-aos="zoom-in-right"
           data-aos-duration={1800}
         >
-          Your Business
+          Business
         </span>
       </h1>
     </div>
