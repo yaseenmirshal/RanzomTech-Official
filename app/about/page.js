@@ -52,13 +52,13 @@ export default function About() {
                                 <div className="col-lg-6 pe-lg-14">
                                     <div className="d-flex gap-xxl-7 gap-xl-5 gap-4 position-relative z-index-1">
                                         <div className="about-small-thumb w-100" data-aos="zoom-in" data-aos-duration={1500}>
-                                            <img src="/assets/img/about/about-s1.png" alt="img" className="w-100" />
+                                            <img src="https://i.pinimg.com/1200x/c2/6e/c9/c26ec96935d9e27d7f5b6e241ba2f37b.jpg" alt="img" className="w-100" />
                                         </div>
                                         <div className="about-small-thumb w-100 mt-xxl-10 mt-xl-7 mt-lg-5 mt-3" data-aos="zoom-in" data-aos-duration={1800}>
-                                            <img src="/assets/img/about/about-s2.png" alt="img" className="w-100" />
+                                            <img src="https://xstarnextjs.vercel.app/assets/img/about/about-s2.png" alt="img" className="w-100" />
                                         </div>
                                         {/*- About Arrow */}
-                                        <img src="/assets/img/element/arrow-right-storke.png" alt="img" className="about-tumb-arrow" />
+                                        <img src="https://xstarnextjs.vercel.app/assets/img/element/arrow-right-storke.png" alt="img" className="about-tumb-arrow" />
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
@@ -68,20 +68,21 @@ export default function About() {
                                                 ABOUT RANZOMTECH
                                             </div>
                                             <h2 className="stitle d-flex align-items-center mb-xxl-8 mb-xl-7 mb-lg-6 mb-5 gap-xxl-7 gap-xl-5 gap-3" data-aos="zoom-in-left" data-aos-duration={1700}>
-                                                <img src="/assets/img/element/arrow-right-storke.png" alt="img" data-aos="zoom-in-up" data-aos-duration={2000} />
+                                                <img src="https://xstarnextjs.vercel.app/assets/img/element/arrow-right-storke.png" alt="img" data-aos="zoom-in-up" data-aos-duration={2000} />
                                                 To Create Artistic &amp; Creative Design
                                             </h2>
                                             <p className="white-clr mb-xxl-8 mb-xl-8 mb-5" data-aos="zoom-in-up" data-aos-duration={1400}>
-                                                Bring to the table win-win survival strategies to ensure proactive domination. At
-                                                the end of the day, going forward, a
-                                                   new normal that has evolved from generation on the runway heading towards a
-                                                streamlined cloud.
+                                                  RanzomTech builds digital systems focused on real business growth.
+
+We create high performing experiences that turn attention into opportunity, combining strategy, design, and intelligent automation to help businesses scale with clarity and efficiency.
+
+Our focus is simple, strong visibility, consistent growth, and long term impact.
                                             </p>
                                             <div className="result-progress-wrap" data-aos="zoom-in-up" data-aos-duration={1800}>
                                                 <div className="progres-item mb-xxl-6 mb-xl-5 mb-4">
                                                     <div className="d-flex align-items-center justify-content-between mb-xxl-4 mb-3">
                                                         <span className="conssub">
-                                                            Branding Design
+                                                            Automation
                                                         </span>
                                                         <span className="cons">88%</span>
                                                     </div>
@@ -120,9 +121,9 @@ export default function About() {
                                                 <i className="fa-solid fa-arrow-right" />
                                             </span>
                                         </span>
-                                        Product Design
+                                        Web Design &amp; Development
                                         <span className="digital-thumb">
-                                            <img src="/assets/img/service/tab1.png" alt="img" />
+                                            <img src="https://i.pinimg.com/1200x/f8/68/0a/f8680a08946fdbe72f797bf35b54fcf3.jpg" alt="img" />
                                         </span>
                                     </div>
                                     <div className="cmn-textslide d-grid position-relative">
@@ -134,7 +135,7 @@ export default function About() {
                                         </span>
                                         UI/UX Experience
                                         <span className="digital-thumb">
-                                            <img src="/assets/img/service/tab2.png" alt="img" />
+                                            <img src="https://i.pinimg.com/1200x/41/83/b9/4183b9de8a960be2404ebd99b0933b32.jpg" alt="img" />
                                         </span>
                                     </div>
                                     <div className="cmn-textslide d-grid position-relative">
@@ -146,7 +147,7 @@ export default function About() {
                                         </span>
                                         Digital Marketing
                                         <span className="digital-thumb">
-                                            <img src="/assets/img/service/tab3.png" alt="img" />
+                                            <img src="https://i.pinimg.com/1200x/7d/c1/7c/7dc17cab9a6cf8863a8bad0cb28124c6.jpg" alt="img" />
                                         </span>
                                     </div>
                                 </div>
@@ -158,9 +159,9 @@ export default function About() {
                                                 <i className="fa-solid fa-arrow-right" />
                                             </span>
                                         </span>
-                                        Product Design
+                                        AI Automation
                                         <span className="digital-thumb">
-                                            <img src="/assets/img/service/tab4.png" alt="img" />
+                                            <img src="https://i.pinimg.com/1200x/13/bc/3c/13bc3c6bad007d5b1c61a7fb84645265.jpg" alt="img" />
                                         </span>
                                     </div>
                                     <div className="cmn-textslide d-grid position-relative">
@@ -172,7 +173,7 @@ export default function About() {
                                         </span>
                                         UI/UX Experience
                                         <span className="digital-thumb">
-                                            <img src="/assets/img/service/tab1.png" alt="img" />
+                                            <img src="https://i.pinimg.com/1200x/41/83/b9/4183b9de8a960be2404ebd99b0933b32.jpg" alt="img" />
                                         </span>
                                     </div>
                                     <div className="cmn-textslide d-grid position-relative">
@@ -200,7 +201,7 @@ export default function About() {
                                         </span>
                                         Ecommerce Solutions
                                         <span className="digital-thumb">
-                                            <img src="/assets/img/service/tab1.png" alt="img" />
+                                            <img src="https://i.pinimg.com/736x/3c/24/8e/3c248eb1c1bb288a4ba6cb344207768f.jpg" alt="img" />
                                         </span>
                                     </div>
                                     <div className="cmn-textslide d-grid position-relative">
@@ -238,7 +239,7 @@ export default function About() {
                                         </span>
                                         Custom Solutions
                                         <span className="digital-thumb">
-                                            <img src="/assets/img/service/tab4.png" alt="img" />
+                                            <img src="https://i.pinimg.com/1200x/5e/d3/9b/5ed39b9ec2bc7193e76a39c36a3fdbd0.jpg" alt="img" />
                                         </span>
                                     </div>
                                     <div className="cmn-textslide d-grid position-relative">
@@ -337,22 +338,18 @@ export default function About() {
                                                         <path d="M34.2852 0V25.8H47.1423L38.5708 43H51.4279L59.9994 25.8V0H34.2852Z" fill="#E3FF04" />
                                                     </svg>
                                                     <p className="pra-clr mt-xxl-10 mt-xl-8 mt-lg-7 mt-6 mb-xxl-10 mb-xl-8 mb-lg-7 mb-6">
-                                                        “Welcome to our digital agency We specialize in helping business most like
-                                                        yours
-                                                        succeed
-                                                        online. From website design and
-                                                        development to digital marketing agency”
+                                                       We successfully launched premium websites for Daam Bath Fittings and GDOT Non Woven Bags. Along with the websites, they also provided NFC cards to enhance our business presence."
                                                     </p>
                                                     <div className="d-flex flex-wrap gap-4 align-items-center justify-content-between">
                                                         <div className="d-flex align-items-center gap-xxl-4 gap-xl-3 gap-3">
-                                                            <img src="/assets/img/team/delors.png" alt="img" className="radius100" />
+                                                            <img src="https://instagram.fccj5-1.fna.fbcdn.net/v/t51.2885-19/316364213_154429043984652_6532351776758939069_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fccj5-1.fna.fbcdn.net&_nc_cat=100&_nc_oc=Q6cZ2gE-w2HBSSp4FXT_FjFWUss_YyBVCe9BHzStkiTNB7XmObnQ-Bj2NhiUrZ8wb9uEvZw&_nc_ohc=SNyF1Au8co8Q7kNvwHBl1pj&_nc_gid=26cDvg6-edLx5WS4_LcROw&edm=ALGbJPMBAAAA&ccb=7-5&oh=00_Af2jd1HgOYwPfOQ-whZeygdjjqcaUztuUluaYNqLXD3Dcw&oe=69EBAB2A&_nc_sid=7d3ac5.png" alt="img" className="radius100" />
                                                             <div className="cont">
                                                                 <div>
                                                                     <h6 className="mb-2 white-clr">
-                                                                        Delores Olivo
+                                                                        Irshad Maazank
                                                                     </h6>
                                                                     <span className="pra-clr">
-                                                                        Software Tester
+                                                                        Manager at Alhamd
                                                                     </span>
                                                                 </div>
                                                             </div>
@@ -375,11 +372,7 @@ export default function About() {
                                                         <path d="M34.2852 0V25.8H47.1423L38.5708 43H51.4279L59.9994 25.8V0H34.2852Z" fill="#E3FF04" />
                                                     </svg>
                                                     <p className="pra-clr mt-xxl-10 mt-xl-8 mt-lg-7 mt-6 mb-xxl-10 mb-xl-8 mb-lg-7 mb-6">
-                                                        “Welcome to our digital agency We specialize in helping business most like
-                                                        yours
-                                                        succeed
-                                                        online. From website design and
-                                                        development to digital marketing agency”
+                                                       Worked with RanzomTech to create a website for my salon business in Abu Dhabi, available in both English and Arabic. The result is a well designed, business ready website that perfectly fits my needs.
                                                     </p>
                                                     <div className="d-flex flex-wrap gap-4 align-items-center justify-content-between">
                                                         <div className="d-flex align-items-center gap-xxl-4 gap-xl-3 gap-3">
@@ -387,10 +380,10 @@ export default function About() {
                                                             <div className="cont">
                                                                 <div>
                                                                     <h6 className="mb-2 white-clr">
-                                                                        Delores Olivo
+                                                                        Arshad 
                                                                     </h6>
                                                                     <span className="pra-clr">
-                                                                        Software Tester
+                                                                        Manager at Stylicle Salon 
                                                                     </span>
                                                                 </div>
                                                             </div>

@@ -34,10 +34,11 @@ export default function About2() {
                                         </span>
                                     </h2>
                                     <p className="white-clr mb-xxl-10 mb-xl-8 mb-6">
-                                        Bring to the table win-win survival strategies to ensure proactive domination. At
-                                        the end of the day, going forward, a
-                                        new normal that has evolved from generation on the runway heading towards a
-                                        streamlined cloud.
+                                      RanzomTech builds digital systems focused on real business growth.
+
+We create high performing experiences that turn attention into opportunity, combining strategy, design, and intelligent automation to help businesses scale with clarity and efficiency.
+
+Our focus is simple, strong visibility, consistent growth, and long term impact.
                                     </p>
                                     <div className="global-counting mb-xxl-10 mb-xl-8 mb-6 d-flex align-items-center gap-xxl-7 gap-xl-5 gap-4">
                                         <div className="counting-item">

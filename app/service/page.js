@@ -73,7 +73,7 @@ export default function Service() {
                                                         </li>
                                                     </ul>
                                                     <div className="tab-remove-thumb">
-                                                        <img src="/assets/img/service/tab1.png" alt="img" />
+                                                        <img src="/assets/img/service/2.png" alt="imgweb" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -114,7 +114,7 @@ export default function Service() {
                                                         </li>
                                                     </ul>
                                                     <div className="tab-remove-thumb">
-                                                        <img src="/assets/img/service/tab2.png" alt="img" />
+                                                        <img src="/assets/img/service/3.png" alt="img" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -156,7 +156,7 @@ export default function Service() {
                                                         </li>
                                                     </ul>
                                                     <div className="tab-remove-thumb">
-                                                        <img src="/assets/img/service/tab3.png" alt="img" />
+                                                        <img src="/assets/img/service/1.png" alt="img" />
                                                     </div>
                                                 </div>
                                             </div>

@@ -43,7 +43,7 @@ export default function Hero2() {
                                            We design and build digital systems that streamline operations, automate workflows, 
                                            and create a strong foundation for modern businesses.
                                         </p>
-                                        <Link href="/about" className="explore-more d-inline-flex align-items-center gap-1">
+                                        <Link href="/contact" className="explore-more d-inline-flex align-items-center gap-1">
                                             Start a Project
                                             <span className="rot60">
                                                 <i className="fas fa-arrow-up" />
