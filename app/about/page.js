@@ -74,7 +74,7 @@ export default function About() {
                                             <p className="white-clr mb-xxl-8 mb-xl-8 mb-5" data-aos="zoom-in-up" data-aos-duration={1400}>
                                                 Bring to the table win-win survival strategies to ensure proactive domination. At
                                                 the end of the day, going forward, a
-                                                new normal that has evolved from generation on the runway heading towards a
+                                                   new normal that has evolved from generation on the runway heading towards a
                                                 streamlined cloud.
                                             </p>
                                             <div className="result-progress-wrap" data-aos="zoom-in-up" data-aos-duration={1800}>

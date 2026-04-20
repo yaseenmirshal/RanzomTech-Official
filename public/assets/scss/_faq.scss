@@ -186,10 +186,10 @@
 	}
 	@include maxQuery(1399) {
 		.mtitle {
-			font-size: 20px !important;
+			font-size: 200px;
 		}
 		.tab-remove-thumb {
-			max-width: 200px;
+			max-width: 100px !important;
 			img {
 				width: 100%;
 			}
