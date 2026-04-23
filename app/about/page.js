@@ -69,7 +69,7 @@ export default function About() {
                                             </div>
                                             <h2 className="stitle d-flex align-items-center mb-xxl-8 mb-xl-7 mb-lg-6 mb-5 gap-xxl-7 gap-xl-5 gap-3" data-aos="zoom-in-left" data-aos-duration={1700}>
                                                 <img src="https://xstarnextjs.vercel.app/assets/img/element/arrow-right-storke.png" alt="img" data-aos="zoom-in-up" data-aos-duration={2000} />
-                                                To Create Artistic &amp; Creative Design
+                                                We are digital creative agency for business
                                             </h2>
                                             <p className="white-clr mb-xxl-8 mb-xl-8 mb-5" data-aos="zoom-in-up" data-aos-duration={1400}>
                                                   RanzomTech builds digital systems focused on real business growth.

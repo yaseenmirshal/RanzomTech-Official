@@ -34,7 +34,7 @@ export default function Faq() {
                                             <div className="content-area" style={{ display: `${isAccordion == 1 ? "block" : "none"}` }}>
                                                 <div className="content-body pt-4">
                                                     <p className="pra-clr">
-                                                        We provide web development, UI/UX design, and AI-powered solutions tailored to business needs.
+                                                        We provide web development, Lead Generation, and AI-powered solutions tailored to business needs.
                                                     </p>
                                                 </div>
                                             </div>
