@@ -407,6 +407,9 @@ Our focus is simple, strong visibility, consistent growth, and long term impact.
                     </section>
                 </div>
 
+                <Team3/>
+
+
             </Layout>
         </>
     )

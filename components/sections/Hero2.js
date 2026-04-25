@@ -66,13 +66,13 @@ export default function Hero2() {
                 {/* Element */}
                 {/* Social */}
                 <div className="spilit-socail d-flex align-items-center gap-xxl-16 gap-xl-10 gap-5">
-                    <Link href="/#">
+                    <Link href="https://www.facebook.com/profile.php?id=61573078530968" target="_blank">
                         FaceBook
                     </Link>
-                    <Link href="/#">
-                        Twitter
+                    <Link href="http://wa.me/919544534677" target="_blank">
+                        WhatsApp
                     </Link>
-                    <Link href="/#">
+                    <Link href="https://www.instagram.com/ranzomtech/" target="_blank">
                         Instagram
                     </Link>
                 </div>
