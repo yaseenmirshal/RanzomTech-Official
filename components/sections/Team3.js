@@ -255,14 +255,14 @@ export default function Team3() {
                          <Tilt options={toltOptions} className="col-xl-3 col-lg-4 col-md-6 col-sm-6" data-aos="fadein" data-aos-duration={1400}>
                             <div className="team-staf-item tilt bg2-clr text-center py-xxl-8 py-xl-6 py-5 px-xxl-7 px-xl-5 px-4">
                                 <div className="thumb">
-                                    <img src="/assets/img/team/3.png" alt="img" />
+                                    <img src="/assets/img/team/ayisha.png" alt="img" />
                                 </div>
                                 <div className="content bb-border pb-xxl-4 pb-3 mb-xxl-6 mb-xl-4 mb-3">
                                     <h6 className="m-3 white-clr">
                                         Ayisha Fabi
                                     </h6>
                                     <span className="pra-clr">
-                                        COO &amp; Digital Strategist
+                                        Digital Strategist
                                     </span>
                                 </div>
                                 <ul className="trans-social d-flex align-items-center justify-content-center gap-xxl-5 gap-xl-4 gap-3">
@@ -303,14 +303,14 @@ export default function Team3() {
                         <Tilt options={toltOptions} className="col-xl-3 col-lg-4 col-md-6 col-sm-6" data-aos="fadein" data-aos-duration={1800}>
                             <div className="team-staf-item tilt bg2-clr text-center py-xxl-8 py-xl-6 py-5 px-xxl-7 px-xl-5 px-4">
                                 <div className="thumb">
-                                    <img src="/assets/img/team/1.png" alt="img" />
+                                    <img src="/assets/img/team/aqil.png" alt="img" />
                                 </div>
                                 <div className="content bb-border pb-xxl-4 pb-3 mb-xxl-6 mb-xl-4 mb-3">
                                     <h6 className="m-3 white-clr">
-                                        Afnan PK
+                                        Aqil Rasheed
                                     </h6>
                                     <span className="pra-clr">
-                                    Python Developer
+                                    Ai Developer
                                     </span>
                                 </div>
                                 <ul className="trans-social d-flex align-items-center justify-content-center gap-xxl-5 gap-xl-4 gap-3">
