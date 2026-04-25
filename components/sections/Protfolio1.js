@@ -71,7 +71,7 @@ export default function Protfolio1() {
                                         <img src="/assets/img/element/arrow-cmn.png" alt="img" />
                                         <Link href="/service" className="cont">
                                             <h4 className="white-clr">
-                                                Amazing Design
+                                                Amazing Designs
                                                 <span className="d-block">
                                                     and Solutions
                                                 </span>
