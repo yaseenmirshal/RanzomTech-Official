@@ -116,7 +116,7 @@ export default function Testimonial3() {
                                                     Arshad
                                                 </h6>
                                                 <span className="pra-clr mb-2 d-block">
-                                                    Manager @Stylicle
+                                                    Manager at Stylicle
                                                 </span>
                                                 <div className="ratting-area d-flex align-items-center gap-2">
                                                     <i className="fa-solid fa-star theme-clr" />
