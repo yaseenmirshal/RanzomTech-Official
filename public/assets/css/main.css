@@ -3133,7 +3133,8 @@ input.main-search-input::placeholder {
     border: 1px solid #fff;
     border-radius: 8px;
     color: #fff;
-    padding: 5px 24px;
+    padding: 5px 24px 5px 24px;
+    margin-right: 20px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -3142,6 +3143,20 @@ input.main-search-input::placeholder {
 .login-btn:hover {
     border-color: var(--theme);
     color: var(--theme);
+}
+
+@media (max-width: 768px) {
+    .login-btn {
+        padding: 4px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-btn {
+        padding: 4px 12px;
+        font-size: 13px;
+    }
 }
 
 .blog-singelbtn {

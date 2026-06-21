@@ -4,7 +4,7 @@ export default function TextSLider2() {
     return (
         <>
 
-            <div className="digital-solution testi-italic mb-xxl-4 pb-lg-0 pb-15">
+            <div className="digital-solution testi-italic mb-xxl-20 pb-lg-0 pb-15">
                 <div className="mycustom-marque">
                     <div className="scrolling-wrap">
                         <div className="comm">
